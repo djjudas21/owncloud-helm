@@ -1,0 +1,115 @@
+global:
+  imageRegistry: ""
+  imagePullSecrets: []
+  storageClass: ""
+
+clusterDomain: cluster.local
+commonAnnotations: {}
+commonLabels: {}
+schedulerName: ""
+extraDeploy: []
+
+diagnosticMode:
+  enabled: false
+  command:
+    - sleep
+  args:
+    - infinity
+
+architecture: standalone
+auth:
+  rootPassword: ""
+  database: my_database
+  username: ""
+  password: ""
+  replicationUser: replicator
+  replicationPassword: ""
+  existingSecret: ""
+  forcePassword: false
+  usePasswordFiles: false
+  customPasswordFiles: {}
+initdbScripts: {}
+initdbScriptsConfigMap: ""
+
+primary:
+  resources:
+    limits: {}
+    requests: {}
+  startupWaitOptions: {}
+  extraFlags: ""
+  extraEnvVars: []
+  extraEnvVarsCM: ""
+  extraEnvVarsSecret: ""
+  persistence:
+    enabled: true
+    existingClaim: ""
+    subPath: ""
+    storageClass: ""
+    annotations: {}
+    accessModes:
+      - ReadWriteOnce
+    size: 8Gi
+    selector: {}
+  extraVolumes: []
+  extraVolumeMounts: []
+  initContainers: []
+  sidecars: []
+  service:
+    type: ClusterIP
+    port: 3306
+    nodePort: ""
+    clusterIP: ""
+    loadBalancerIP: ""
+    externalTrafficPolicy: Cluster
+    loadBalancerSourceRanges: []
+    annotations: {}
+
+secondary:
+  replicaCount: 1
+  resources:
+    limits: {}
+    requests: {}
+  startupWaitOptions: {}
+  extraFlags: ""
+  extraEnvVars: []
+  extraEnvVarsCM: ""
+  extraEnvVarsSecret: ""
+  persistence:
+    enabled: true
+    subPath: ""
+    storageClass: ""
+    annotations: {}
+    accessModes:
+      - ReadWriteOnce
+    size: 8Gi
+    selector: {}
+  extraVolumes: []
+  extraVolumeMounts: []
+  initContainers: []
+  sidecars: []
+  service:
+    type: ClusterIP
+    port: 3306
+    nodePort: ""
+    clusterIP: ""
+    loadBalancerIP: ""
+    externalTrafficPolicy: Cluster
+    loadBalancerSourceRanges: []
+    annotations: {}
+
+volumePermissions:
+  enabled: false
+
+metrics:
+  enabled: false
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "9104"
+  extraArgs:
+    primary: []
+    secondary: []
+  resources:
+    limits: {}
+    requests: {}
+  serviceMonitor:
+    enabled: false
