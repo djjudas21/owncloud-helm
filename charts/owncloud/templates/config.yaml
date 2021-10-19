@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-config
 data:
-  OWNCLOUD_DB_HOST: {{ .Release.Name }}-mysql
+  OWNCLOUD_DB_HOST: {{ .Release.Name }}-mariadb
   OWNCLOUD_DB_NAME: {{ .Values.mariadb.auth.database }}
   OWNCLOUD_DB_USERNAME: {{ .Values.mariadb.auth.username }}
   OWNCLOUD_DB_TYPE: mysql
@@ -35,7 +35,7 @@ data:
 {{- end }}
   OWNCLOUD_MYSQL_UTF8MB4: "true"
   OWNCLOUD_REDIS_ENABLED: "true"
-  OWNCLOUD_REDIS_HOST: {{ .Release.Name }}-redis
+  OWNCLOUD_REDIS_HOST: {{ .Release.Name }}-redis-master
   OWNCLOUD_ACCESSLOG_LOCATION: "/dev/null"
   OWNCLOUD_DB_TIMEOUT: "30"
   OWNCLOUD_DAV_ENABLE_ASYNC: "1"
