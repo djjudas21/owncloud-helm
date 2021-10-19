@@ -10,8 +10,8 @@ global:
     password: ""
 
 ownCloud:
-  adminUsername: ""
-  adminPassword: ""
+  adminUsername: "admin"
+  adminPassword: "admin"
   mail:
     domain: "cluster.local"
     fromAddress: owncloud

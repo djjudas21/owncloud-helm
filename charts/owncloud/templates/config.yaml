@@ -7,7 +7,7 @@ data:
   OWNCLOUD_DB_NAME: {{ .Values.mariadb.auth.database }}
   OWNCLOUD_DB_USERNAME: {{ .Values.mariadb.auth.username }}
   OWNCLOUD_DB_TYPE: mysql
-  OWNCLOUD_ADMIN_USERNAME: {{ .Values.ownCloud.adminUser }}
+  OWNCLOUD_ADMIN_USERNAME: {{ .Values.ownCloud.adminUsername }}
   OWNCLOUD_MAIL_DOMAIN: {{ .Values.ownCloud.mail.domain }}
   OWNCLOUD_MAIL_FROM_ADDRESS: {{ .Values.ownCloud.mail.fromAddress }}
   {{- if .Values.ownCloud.mail.smtp.auth }}
