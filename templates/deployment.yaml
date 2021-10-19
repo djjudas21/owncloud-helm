@@ -37,6 +37,9 @@ spec:
             - name: http
               containerPort: 80
               protocol: TCP
+          volumeMounts:
+          - mountPath: /mnt/data
+            name: data
           livenessProbe:
             httpGet:
               path: /
@@ -59,3 +62,7 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: {{ .Release.Name }}-data
