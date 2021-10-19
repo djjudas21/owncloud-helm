@@ -103,8 +103,10 @@ tolerations: []
 
 affinity: {}
 
+# Bitnami MariaDB
+# https://github.com/bitnami/charts/blob/master/bitnami/mariadb/values.yaml
 mariadb:
-  architecture: replication
+  architecture: standalone
   auth:
     rootPassword: ""
     database: owncloud
@@ -135,9 +137,10 @@ mariadb:
     serviceMonitor:
       enabled: false
 
-
+# Bitnami Redis
+# https://github.com/bitnami/charts/blob/master/bitnami/redis/values.yaml
 redis:
-  architecture: replication
+  architecture: standalone
   auth:
     enabled: true
     sentinel: true
