@@ -122,15 +122,6 @@ mariadb:
       accessModes:
         - ReadWriteOnce
       size: 8Gi
-  secondary:
-    replicaCount: 1
-    resources: {}
-    persistence:
-      enabled: true
-      storageClass: ""
-      accessModes:
-        - ReadWriteOnce
-      size: 8Gi
   metrics:
     enabled: false
     resources: {}
@@ -149,15 +140,6 @@ redis:
     existingSecretPasswordKey: ""
     usePasswordFiles: false
   master:
-    resources: {}
-    persistence:
-      enabled: true
-      storageClass: ""
-      accessModes:
-        - ReadWriteOnce
-      size: 8Gi
-  replica:
-    replicaCount: 2
     resources: {}
     persistence:
       enabled: true
