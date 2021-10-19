@@ -27,9 +27,64 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}
+          env:
+          - name: OWNCLOUD_DB_HOST
+            value: {{ .Release.Name }}-mariadb
+          - name: OWNCLOUD_DB_NAME
+            value: {{ .Values.mariadb.auth.database }}
+          - name: OWNCLOUD_DB_USERNAME
+            value: {{ .Values.mariadb.auth.username }}
+          - name: OWNCLOUD_DB_TYPE
+            value: mysql
+          - name: OWNCLOUD_ADMIN_USERNAME
+            value: {{ .Values.ownCloud.adminUsername }}
+          - name: WNCLOUD_MAIL_DOMAIN
+            value: {{ .Values.ownCloud.mail.domain }}
+          - name: OWNCLOUD_MAIL_FROM_ADDRESS
+            value: {{ .Values.ownCloud.mail.fromAddress }}
+          {{- if .Values.ownCloud.mail.smtp.auth }}
+          - name: OWNCLOUD_MAIL_SMTP_AUTH
+            value: {{ .Values.ownCloud.mail.smtp.auth }}
+          {{- end }}
+          {{- if .Values.ownCloud.mail.smtp.host }}
+          - name: OWNCLOUD_MAIL_SMTP_HOST
+            value: {{ .Values.ownCloud.mail.smtp.host }}
+          {{- end }}
+          {{- if .Values.ownCloud.mail.mode }}
+          - name: OWNCLOUD_MAIL_SMTP_MODE
+            value: {{ .Values.ownCloud.mail.mode }}
+          {{- end }}
+          {{- if .Values.ownCloud.mail.smtp.username }}
+          - name: OWNCLOUD_MAIL_SMTP_NAME
+            value: {{ .Values.ownCloud.mail.smtp.username }}
+          {{- end }}
+          {{- if .Values.ownCloud.mail.smtp.port }}
+          - name: OWNCLOUD_MAIL_SMTP_PORT
+            value: {{ .Values.ownCloud.mail.smtp.port }}
+          {{- end }}  
+          {{- if .Values.ownCloud.mail.smtp.secure }}
+          - name: OWNCLOUD_MAIL_SMTP_SECURE
+            value: {{ .Values.ownCloud.mail.smtp.secure }}
+          {{- end }}
+        {{- with (index .Values.ingress.hosts 0) }}
+          {{- if .host }}
+          - name: OWNCLOUD_DOMAIN
+            value: {{ .host }}
+          {{- end }}
+        {{- end }}
+          - name: OWNCLOUD_MYSQL_UTF8MB4
+            value: "true"
+          - name: OWNCLOUD_REDIS_ENABLED
+            value: "true"
+          - name: OWNCLOUD_REDIS_HOST
+            value: {{ .Release.Name }}-redis-master
+          - name: OWNCLOUD_ACCESSLOG_LOCATION
+            value: "/dev/null"
+          - name: OWNCLOUD_DB_TIMEOUT
+            value: "30"
+          - name: OWNCLOUD_DAV_ENABLE_ASYNC
+            value: "1"
           envFrom:
-          - configMapRef:
-              name: {{ .Release.Name }}-config
           - secretRef:
               name: {{ .Release.Name }}-secret
           securityContext:
