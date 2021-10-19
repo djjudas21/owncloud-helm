@@ -60,7 +60,7 @@ spec:
           {{- end }}
           {{- if .Values.ownCloud.mail.smtp.port }}
           - name: OWNCLOUD_MAIL_SMTP_PORT
-            value: {{ .Values.ownCloud.mail.smtp.port }}
+            value: {{ .Values.ownCloud.mail.smtp.port | quote }}
           {{- end }}  
           {{- if .Values.ownCloud.mail.smtp.secure }}
           - name: OWNCLOUD_MAIL_SMTP_SECURE

@@ -6,8 +6,6 @@ global:
   imageRegistry: ""
   imagePullSecrets: []
   storageClass: ""
-  redis:
-    password: ""
 
 ownCloud:
   adminUsername: "admin"
@@ -126,7 +124,7 @@ redis:
   auth:
     enabled: true
     sentinel: true
-    password: ""
+    password: "redis"
     existingSecret: ""
     existingSecretPasswordKey: ""
     usePasswordFiles: false
