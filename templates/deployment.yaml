@@ -46,13 +46,19 @@ spec:
           - mountPath: /mnt/data
             name: data
           livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
+            exec:
+              command:
+              - /usr/bin/healthcheck
+            failureThreshold: 5
+            periodSeconds: 30
+            timeoutSeconds: 10
+          startupProbe:
+            exec:
+              command:
+              - /usr/bin/healthcheck
+            failureThreshold: 30
+            periodSeconds: 20
+            timeoutSeconds: 10
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
