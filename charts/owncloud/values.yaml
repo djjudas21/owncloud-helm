@@ -90,6 +90,8 @@ nodeSelector: {}
 
 tolerations: []
 
+priorityClassName: ""
+
 affinity: {}
 
 # Bitnami MariaDB
