@@ -3,6 +3,23 @@ entries:
   owncloud:
   - apiVersion: v2
     appVersion: 10.7.0
+    created: "2021-10-19T13:31:15.000398436Z"
+    dependencies:
+    - name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: ~9.6.2
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: ~15.4.1
+    description: A Helm chart for Kubernetes
+    digest: 6d7c08ccdac46e2985f74a0a75a4173ed918b9156457afb15383bb7cb39f074a
+    name: owncloud
+    type: application
+    urls:
+    - https://github.com/djjudas21/owncloud-helm/releases/download/owncloud-0.1.4/owncloud-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 10.7.0
     created: "2021-10-19T13:25:53.383614571Z"
     dependencies:
     - name: mariadb
