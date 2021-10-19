@@ -82,7 +82,7 @@ persistence:
   enabled: true
   storageClass: ""
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   size: 8Gi
 
 resources: {}
