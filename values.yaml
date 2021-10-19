@@ -9,6 +9,21 @@ global:
   redis:
     password: ""
 
+ownCloud:
+  adminUsername: ""
+  adminPassword: ""
+  mail:
+    domain: "cluster.local"
+    fromAddress: owncloud
+    mode: smtp
+    smtp:
+      host:
+      port:
+      secure:
+      auth: false
+      username: ""
+      password: ""
+
 replicaCount: 1
 
 image:
