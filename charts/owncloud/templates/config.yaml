@@ -10,14 +10,28 @@ data:
   OWNCLOUD_ADMIN_USERNAME: {{ .Values.ownCloud.adminUser }}
   OWNCLOUD_MAIL_DOMAIN: {{ .Values.ownCloud.mail.domain }}
   OWNCLOUD_MAIL_FROM_ADDRESS: {{ .Values.ownCloud.mail.fromAddress }}
+  {{- if .Values.ownCloud.mail.smtp.auth }}
   OWNCLOUD_MAIL_SMTP_AUTH: {{ .Values.ownCloud.mail.smtp.auth }}
+  {{- end }}
+  {{- if .Values.ownCloud.mail.smtp.host }}
   OWNCLOUD_MAIL_SMTP_HOST: {{ .Values.ownCloud.mail.smtp.host }}
+  {{- end }}
+  {{- if .Values.ownCloud.mail.mode }}
   OWNCLOUD_MAIL_SMTP_MODE: {{ .Values.ownCloud.mail.mode }}
+  {{- end }}
+  {{- if .Values.ownCloud.mail.smtp.username }}
   OWNCLOUD_MAIL_SMTP_NAME: {{ .Values.ownCloud.mail.smtp.username }}
+  {{- end }}
+  {{- if .Values.ownCloud.mail.smtp.port }}
   OWNCLOUD_MAIL_SMTP_PORT: {{ .Values.ownCloud.mail.smtp.port }}
+  {{- end }}  
+  {{- if .Values.ownCloud.mail.smtp.secure }}
   OWNCLOUD_MAIL_SMTP_SECURE: {{ .Values.ownCloud.mail.smtp.secure }}
+  {{- end }}
 {{- with (index .Values.ingress.hosts 0) }}
+  {{- if .host }}
   OWNCLOUD_DOMAIN: {{ .host }}
+  {{- end }}
 {{- end }}
   OWNCLOUD_MYSQL_UTF8MB4: "true"
   OWNCLOUD_REDIS_ENABLED: "true"
