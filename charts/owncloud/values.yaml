@@ -122,7 +122,7 @@ mariadb:
 redis:
   architecture: standalone
   auth:
-    enabled: true
+    enabled: false
     sentinel: true
     password: "redis"
     existingSecret: ""
