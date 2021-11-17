@@ -1,21 +1,14 @@
 apiVersion: v2
 name: owncloud
-description: A Helm chart for Kubernetes
-
-# A chart can be either an 'application' or a 'library' chart.
-#
-# Application charts are a collection of templates that can be packaged into versioned archives
-# to be deployed.
-#
-# Library charts provide useful utilities or functions for the chart developer. They're included as
-# a dependency of application charts to inject those utilities and functions into the rendering
-# pipeline. Library charts do not define any templates and therefore cannot be deployed.
+description: A file sharing server that puts the control and security of your own data back into your hands.
 type: application
+annotations:
+  category: Infrastructure
 
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.1.10
+version: 0.1.11
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -25,8 +18,22 @@ appVersion: "10.8"
 
 dependencies:
 - name: mariadb
-  version: "~9.6.2"
+  version: "9.x.x"
   repository: "https://charts.bitnami.com/bitnami"
 - name: redis
-  version: "~15.4.1"
+  version: "15.x.x"
   repository: "https://charts.bitnami.com/bitnami"
+
+home: https://github.com/djjudas21/owncloud-helm
+icon: https://bitnami.com/assets/stacks/owncloud/img/owncloud-stack-220x234.png
+keywords:
+  - owncloud
+  - storage
+  - http
+  - web
+  - php
+maintainers:
+  - name: djjudas21
+sources:
+  - https://hub.docker.com/r/owncloud/server
+  - https://owncloud.org/

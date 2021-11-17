@@ -105,6 +105,7 @@ mariadb:
     replicationPassword: "replication"
   primary:
     resources: {}
+    priorityClassName: ""
     persistence:
       enabled: true
       storageClass: ""
@@ -122,7 +123,7 @@ mariadb:
 redis:
   architecture: standalone
   auth:
-    enabled: true
+    enabled: false
     sentinel: true
     password: "redis"
     existingSecret: ""
@@ -130,6 +131,7 @@ redis:
     usePasswordFiles: false
   master:
     resources: {}
+    priorityClassName: ""
     persistence:
       enabled: true
       storageClass: ""
