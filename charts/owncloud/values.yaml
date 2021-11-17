@@ -105,6 +105,7 @@ mariadb:
     replicationPassword: "replication"
   primary:
     resources: {}
+    priorityClassName: ""
     persistence:
       enabled: true
       storageClass: ""
@@ -130,6 +131,7 @@ redis:
     usePasswordFiles: false
   master:
     resources: {}
+    priorityClassName: ""
     persistence:
       enabled: true
       storageClass: ""
