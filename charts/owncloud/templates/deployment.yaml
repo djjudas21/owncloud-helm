@@ -102,8 +102,15 @@ spec:
             exec:
               command:
               - /usr/bin/healthcheck
-            failureThreshold: 5
-            periodSeconds: 30
+            failureThreshold: 6
+            periodSeconds: 10
+            timeoutSeconds: 10
+          readinessProbe:
+            exec:
+              command:
+              - /usr/bin/healthcheck
+            failureThreshold: 2
+            periodSeconds: 10
             timeoutSeconds: 10
           startupProbe:
             exec:
